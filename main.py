@@ -26,22 +26,25 @@ options.add_argument('--profile-directory=Default')
 driver = webdriver.Chrome("C:\\Users\\Dell\\Downloads\\chromedriver.exe", options=options)
 driver.get("https://web.whatsapp.com/")
 
+#userPhone = input("Enter phone: ")
+userName = input("Enter phone: ")
+
 time.sleep(5)
 
-user_name_list = ['Nahid Miu']
+user_name_list = ["Nahid Miu"]
 search_box = driver.find_element_by_xpath("/html/body/div[1]/div[1]/div[1]/div[3]/div/div[1]/div/label/div/div[2]")
 try:
-    search_box.send_keys(user_name_list)
+    search_box.send_keys(userName)
     search_box.click()
 except NoSuchElementExpection as se:
     print("There is no person in your contact list")
 except Exception:
     driver.close()
 
-for user_name in user_name_list:
+for username in user_name_list:
     try:
 
-        user = driver.find_element_by_xpath('//span[@title="{}"]'.format(user_name))
+        user = driver.find_element_by_xpath('//span[@title="{}"]'.format(username))
         # user = driver.find_element_by_xpath("/html/body/div[1]/div[1]/div[1]/div[3]/div/div[1]/div/label/div/div[2]".format(user_name))
         user.click()
     except NoSuchElementExpection as se:

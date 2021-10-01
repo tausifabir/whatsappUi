@@ -17,7 +17,7 @@ def print_hi(name):
 if __name__ == '__main__':
     print_hi('PyCharm Abir')
 
-mgs = "Selenium rocks!!!!"
+mgs = "Hello I'm Selenium!!!!"
 options = webdriver.ChromeOptions()
 
 options.add_argument(r'--user-data-dir=C:\Users\Dell\AppData\Local\Google\Chrome\User Data\Default')
@@ -26,24 +26,32 @@ options.add_argument('--profile-directory=Default')
 driver = webdriver.Chrome("C:\\Users\\Dell\\Downloads\\chromedriver.exe", options=options)
 driver.get("https://web.whatsapp.com/")
 
-#userPhone = input("Enter phone: ")
-userName = input("Enter phone: ")
+# Entering User Phone / Name
+userName = input("Enter phone/name: ")
 
 time.sleep(5)
 
-user_name_list = ["Nahid Miu"]
+user_name_list = [userName]
+
+# Select Search Box & searching username/ userPhone
 search_box = driver.find_element_by_xpath("/html/body/div[1]/div[1]/div[1]/div[3]/div/div[1]/div/label/div/div[2]")
 try:
     search_box.send_keys(userName)
     search_box.click()
+
+    print("Test Case2 Success")
+
 except NoSuchElementExpection as se:
+
+    print("Test Case2 Failed")
     print("There is no person in your contact list")
 except Exception:
     driver.close()
 
+
+# select the user name
 for username in user_name_list:
     try:
-
         user = driver.find_element_by_xpath('//span[@title="{}"]'.format(username))
         # user = driver.find_element_by_xpath("/html/body/div[1]/div[1]/div[1]/div[3]/div/div[1]/div/label/div/div[2]".format(user_name))
         user.click()
@@ -51,28 +59,33 @@ for username in user_name_list:
         print("There is no person in your contact list")
     except Exception:
         driver.close()
+
 time.sleep(5)
 
+# Select the chat window & send message to users
 message_box = driver.find_element_by_xpath(
     "/html/body/div[1]/div[1]/div[1]/div[4]/div[1]/footer/div[1]/div/div/div[2]/div[1]/div/div[2]")
-
 time.sleep(3)
 
 message_box.send_keys(mgs)
 
-message_box = driver.find_element_by_xpath(
+sendTexts_icon = driver.find_element_by_xpath(
     "/html/body/div[1]/div[1]/div[1]/div[4]/div[1]/footer/div[1]/div/div/div[2]/div[2]/button/span")
-# message_box.click()
-#message_status = driver.find_element_by_xpath(
-#    "/html/body/div[1]/div[1]/div[1]/div[2]/div[3]/span/div[1]/span/div[1]/div[1]/div/div[2]/div/div/div/div[2]/div/div/span")
-#print("Status: " + str(message_status))
+
+# sendTexts_icon = driver.find_element_by_xpath("//*[@id="pane-side"]/div[1]/div/div/div[13]/div/div/div[2]")
+
+
+# sendTexts_icon.click()
+# message_status = driver.find_element_by_xpath("//body/div[@id='app']/div[1]/div[1]/div[4]/div[1]/div[3]/div[1]/div[2]/div[3]/div[21]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/span[1]")
+# print("Status: " + str(message_status))
 
 logout = driver.find_element_by_xpath(
     "/html/body/div[1]/div[1]/div[1]/div[3]/div/header/div[2]/div/span/div[3]/div/span")
-logout.click()
+# logout.click()
 logout_btn = driver.find_element_by_xpath(
     "/html/body/div[1]/div[1]/div[1]/div[3]/div/header/div[2]/div/span/div[3]/span/div[1]/ul/li[5]/div[1]")
-#logout_btn.click()
+logout_btn.click()
+
 '''
 confirm_logout = driver.find_element_by_xpath(
     "/html/body/div[1]/div[1]/span[2]/div[1]/div/div/div/div/div/div[3]/div[2]/div/div")

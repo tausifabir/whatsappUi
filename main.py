@@ -15,8 +15,7 @@ def print_hi(name):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm Abir')
-
+    print_hi('')
 mgs = "Hello I'm Selenium!!!!"
 options = webdriver.ChromeOptions()
 
@@ -39,7 +38,7 @@ try:
     search_box.send_keys(userName)
     search_box.click()
 
-    print("Test Case2 Success")
+    print("Test   Success")
 
 except NoSuchElementExpection as se:
 
@@ -75,9 +74,10 @@ sendTexts_icon = driver.find_element_by_xpath(
 # sendTexts_icon = driver.find_element_by_xpath("//*[@id="pane-side"]/div[1]/div/div/div[13]/div/div/div[2]")
 
 
-# sendTexts_icon.click()
-# message_status = driver.find_element_by_xpath("//body/div[@id='app']/div[1]/div[1]/div[4]/div[1]/div[3]/div[1]/div[2]/div[3]/div[21]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/span[1]")
-# print("Status: " + str(message_status))
+sendTexts_icon.click()
+
+message_status = driver.find_element_by_xpath("//body/div[@id='app']/div[1]/div[1]/div[4]/div[1]/div[3]/div[1]/div[2]/div[3]/div[23]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/span[1]")
+
 
 logout = driver.find_element_by_xpath(
     "/html/body/div[1]/div[1]/div[1]/div[3]/div/header/div[2]/div/span/div[3]/div/span")
